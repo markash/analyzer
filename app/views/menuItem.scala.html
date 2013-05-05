@@ -1,0 +1,5 @@
+@(items: Seq[MenuItem])
+    @items.map{ item =>
+    <li><a href="@item.url"><i class="icon-chevron-right"></i>@item.name</a></li>
+    }
+</li>

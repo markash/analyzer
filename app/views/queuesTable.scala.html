@@ -1,0 +1,41 @@
+@(queues: Seq[Queue])
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th colspan="2"></th>
+            <th colspan="4">Messages</th>
+            <th colspan="2">Consumers</th>
+            <th colspan="2">Bytes</th>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Paused</th>
+            <th>Current</th>
+            <th>Pending</th>
+            <th>High</th>
+            <th>Received</th>
+            <th>Current</th>
+            <th>High</th>
+            <th>Current</th>
+            <th>High</th>
+        </tr>
+    </thead>
+    <tbody>
+    @queues.map { queue =>
+    <tr @if(queue.status.consumptionPaused) {class="error"}>
+        <td>@queue.name</td>
+        <td>@queue.status.consumptionPaused</td>
+        <td>@queue.statistics.messagesCurrentCount</td>
+        <td>@queue.statistics.messagesPendingCount</td>
+        <td>@queue.statistics.messagesHighCount</td>
+        <td>@queue.statistics.messagesReceivedCount</td>
+        <td>@queue.statistics.consumersCurrentCount</td>
+        <td>@queue.statistics.consumersHighCount</td>
+        <td>@queue.statistics.bytesCurrentCount</td>
+        <td>@queue.statistics.bytesHighCount</td>
+
+    </tr>
+    }
+    </tbody>
+</table>

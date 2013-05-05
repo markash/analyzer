@@ -1,0 +1,10 @@
+@(sections: Seq[Section])(queues: Seq[Queue])
+
+@main("Queue Statistics", true, false)(sections) {
+    <section id="typography">
+        <div class="page-header">
+            <h3>Queue Statistics</h3>
+        </div>
+        @queuesTable(queues)
+    </section>
+}

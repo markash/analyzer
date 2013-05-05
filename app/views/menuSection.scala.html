@@ -1,0 +1,4 @@
+@(sections: Seq[Section])
+    @sections.map { section =>
+        @menuItem(section.items)
+    }
